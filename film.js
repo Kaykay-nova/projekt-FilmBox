@@ -104,3 +104,28 @@ const filmy = [
 		premiera: '2022-12-24',
 	},
 ]
+
+const filmId = location.hash.substring(1);
+
+
+const getFilmById = (id) => {
+	let chosenFilm = null;
+	filmy.forEach((film) => {
+		if (film.id === id) {
+			chosenFilm = film
+		} 
+	})
+	return chosenFilm
+}
+
+const detailFilm = getFilmById(filmId)
+
+const nazev = document.querySelector('.card-title')
+nazev.textContent = detailFilm.nazev
+console.log(detailFilm.nazev)
+
+const popisFilmu = document.querySelector('.card-text')
+popisFilmu.textContent = detailFilm.popis
+
+const plakat = document.querySelector('.img-fluid')
+plakat.src = detailFilm.plakat.url;
